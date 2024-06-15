@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.grupo_01_tarea_12_ejercicio_01.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.grupo_01_tarea_12_ejercicio_01.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.grupo_01_tarea_12_ejercicio_01.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" >
+        <action
+            android:id="@+id/action_nav_slideshow_to_registrarPedidoFragment"
+            app:destination="@id/registrarPedidoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.grupo_01_tarea_12_ejercicio_01.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.grupo_01_tarea_12_ejercicio_01.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/registrarPedidoFragment"
+        android:name="com.example.grupo_01_tarea_12_ejercicio_01.RegistrarPedidoFragment"
+        android:label="fragment_registrar_pedido"
+        tools:layout="@layout/fragment_registrar_pedido" >
+        <action
+            android:id="@+id/action_registrarPedidoFragment_to_registrarArticuloFragment"
+            app:destination="@id/registrarArticuloFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrarArticuloFragment"
+        android:name="com.example.grupo_01_tarea_12_ejercicio_01.RegistrarArticuloFragment"
+        android:label="fragment_registrar_articulo"
+        tools:layout="@layout/fragment_registrar_articulo" />
+    <fragment
+        android:id="@+id/nav_articulo"
+        android:name="com.example.grupo_01_tarea_12_ejercicio_01.ArticuloFragment"
+        android:label="fragment_articulo"
+        tools:layout="@layout/fragment_articulo"/>
+</navigation>

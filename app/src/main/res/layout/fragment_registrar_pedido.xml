@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegistrarPedidoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/form_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrar Pedido"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginVertical="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#E6E6E6"
+            android:layout_marginHorizontal="15dp"
+            android:padding="10dp">
+
+            <!-- Codigo pedido -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Codigo pedido: "
+                    android:layout_margin="5dp"/>
+                <EditText
+                    android:id="@+id/edt_codigo_pedido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"/>
+            </LinearLayout>
+
+            <!-- Nombre del Cliente -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre del Cliente: "
+                    android:layout_margin="5dp"/>
+                <EditText
+                    android:id="@+id/edt_codigo_cliente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"/>
+            </LinearLayout>
+
+            <!-- Fecha de envio y Codigo de direccion (Horizontal) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Fecha de envio -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha de envio: "
+                        android:layout_margin="5dp"/>
+                    <EditText
+                        android:id="@+id/edt_fecha_envio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="datetime"/>
+                </LinearLayout>
+
+                <!-- Codigo de direccion -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Codigo de direccion: "
+                        android:layout_margin="5dp"/>
+                    <EditText
+                        android:id="@+id/sp_codigo_direccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="09dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <ListView
+            android:id="@+id/lv_articulos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="15dp"
+            android:padding="5dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:id="@+id/layotu_agregar_pedido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="0dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_registrar_pedido"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:backgroundTint="#4CAF50"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:textSize="17sp"
+                android:layout_margin="4dp"
+                android:text="Registrar Pedido"/>
+        </LinearLayout>
+
+        <!-- Hidden layout (actualizar y agregar artículo) -->
+        <LinearLayout
+            android:id="@+id/hidden_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="0dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="0dp"
+            android:visibility="gone">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_actualizar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:backgroundTint="#CDDC39"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:textAllCaps="false"
+                android:layout_margin="4dp"
+                android:text="Actualizar"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_agregar_articulo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:backgroundTint="@color/teal_700"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:textAllCaps="false"
+                android:layout_margin="4dp"
+                android:text="Agregar Articulo"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
