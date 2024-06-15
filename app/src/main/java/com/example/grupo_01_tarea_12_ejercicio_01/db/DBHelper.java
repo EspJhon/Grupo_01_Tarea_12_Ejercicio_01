@@ -125,14 +125,18 @@ public class DBHelper {
         return success;
     }
 
-
-
-    public void insertarDireccion(Direccion direccion) {
+    public void InsertarDireccion(Direccion direccion) {
         dbAdapter.open();
         dbAdapter.insertarDireccion(direccion);
         dbAdapter.close();
     }
 
+    public ArrayList<Direccion> get_all_Direcciones(){
+        dbAdapter.open();
+        ArrayList<Direccion> direcciones = dbAdapter.get_all_Direcciones();
+        dbAdapter.close();
+        return direcciones;
+    }
 
     public Direccion getDirecciones(int codigo){
         dbAdapter.open();
@@ -142,7 +146,7 @@ public class DBHelper {
     }
     public void Actualizar_Direccion(Direccion direccion) {
         dbAdapter.open();
-        dbAdapter.ActualizarDireccion(direccion);
+        dbAdapter.Actualizar_Direccion(direccion);
         dbAdapter.close();
     }
     public void EliminarDireccion(Direccion direccion) {
@@ -150,8 +154,17 @@ public class DBHelper {
         dbAdapter.Eliminar_Direccion(direccion);
         dbAdapter.close();
     }
-
-
+    public Cliente objclientevalidar (String username, String password){
+        dbAdapter.open();
+        Cliente objcliente = dbAdapter.getClienteValidado(username, password);
+        dbAdapter.close();
+        return  objcliente;
+    }
+    public void ActualizarCliente(Cliente cliente){
+        dbAdapter.open();
+        dbAdapter.Actualizar_Cliente(cliente);
+        dbAdapter.close();
+    }
 
     public void cerrarSesion() {
         dbAdapter.close();

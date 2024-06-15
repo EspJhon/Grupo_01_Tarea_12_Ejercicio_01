@@ -1,6 +1,8 @@
 package com.example.grupo_01_tarea_12_ejercicio_01.modelo;
 
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable {
 
     private int idCliente;
     private int codigo;

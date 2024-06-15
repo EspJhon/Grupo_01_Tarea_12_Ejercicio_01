@@ -15,7 +15,11 @@
         android:id="@+id/nav_gallery"
         android:name="com.example.grupo_01_tarea_12_ejercicio_01.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_gallery_to_direccionFragment"
+            app:destination="@id/direccionFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -63,4 +67,13 @@
         android:name="com.example.grupo_01_tarea_12_ejercicio_01.ArticuloFragment"
         android:label="fragment_articulo"
         tools:layout="@layout/fragment_articulo"/>
+    <fragment
+        android:id="@+id/direccionFragment"
+        android:name="com.example.grupo_01_tarea_12_ejercicio_01.DireccionFragment"
+        android:label="fragment_direccion"
+        tools:layout="@layout/fragment_direccion" >
+        <action
+            android:id="@+id/action_direccionFragment_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+    </fragment>
 </navigation>

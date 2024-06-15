@@ -194,6 +194,25 @@ public class DBAdapter {
         values.put(KEY_ARTICULO_STOCK, articulo.getStock());
         db.insert(TABLE_ARTICULO, null, values);
     }
+
+    public long Actualizar_Cliente(Cliente cliente) {
+        ContentValues values = new ContentValues();
+        values.put(KEY_CLIENTE_NOMBRE, cliente.getCodigo());
+        values.put(KEY_CLIENTE_USERNAME, cliente.getUsername());
+        values.put(KEY_CLIENTE_PASSWORD, cliente.getPassword());
+
+        String whereClause = KEY_ID_CLIENTE + " = ?";
+        String[] whereArgs = { String.valueOf(cliente.getIdCliente())};
+        int rowsAffected = db.update(TABLE_CLIENTE, values, whereClause, whereArgs);
+
+        if (rowsAffected > 0) {
+            Toast.makeText(context, "Dirección actualizada correctamente", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "No se pudo actualizar la dirección", Toast.LENGTH_SHORT).show();
+        }
+        return 0;
+    }
+
     public ArrayList<Articulo> get_all_Articulos() {
         ArrayList<Articulo> articulos = new ArrayList<>();
         try {
@@ -292,6 +311,42 @@ public class DBAdapter {
         return success;
     }
 
+    public Cliente getClienteValidado(String username, String password) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        String[] columns = {
+                KEY_ID_CLIENTE,
+                KEY_CLIENTE_CODIGO,
+                KEY_CLIENTE_NOMBRE,
+                KEY_CLIENTE_USERNAME,
+                KEY_CLIENTE_PASSWORD
+        };
+        String selection = KEY_CLIENTE_USERNAME + " = ? AND " + KEY_CLIENTE_PASSWORD + " = ?";
+        String[] selectionArgs = { username, password };
+
+        Cursor cursor = db.query(TABLE_CLIENTE, columns, selection, selectionArgs, null, null, null);
+
+        Cliente cliente = null;
+
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                cliente = new Cliente();
+                cliente.setIdCliente(cursor.getInt(0));
+                cliente.setCodigo(cursor.getInt(1));
+                cliente.setNombre(cursor.getString(2));
+                cliente.setUsername(cursor.getString(3));
+                cliente.setPassword(cursor.getString(4));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return cliente;
+    }
+
 
     public void InsertarPedido(Pedido pedido) {
         ContentValues values = new ContentValues();
@@ -305,6 +360,8 @@ public class DBAdapter {
         values.put(KEY_ID_DIRECCION, pedido.getIdDireccion());
         db.insert(TABLE_PEDIDO, null, values);
     }
+
+
     public void ActualizarPedido(Pedido pedido) {
         ContentValues values = new ContentValues();
         values.put(KEY_PEDIDO_CODIGO, pedido.getCodigo());
@@ -504,7 +561,7 @@ public class DBAdapter {
             return null;
         }
     }
-    public void insertarDireccion(Direccion direccion) {
+    public long insertarDireccion(Direccion direccion) {
         ContentValues values = new ContentValues();
         values.put(KEY_DIRECCION_CODIGO, direccion.getCodigo());
         values.put(KEY_DIRECCION_NUMERO, direccion.getNumero());
@@ -513,9 +570,10 @@ public class DBAdapter {
         values.put(KEY_DIRECCION_CIUDAD, direccion.getCiudad());
         values.put(KEY_ID_CLIENTE, direccion.getIdCliente());
         db.insert(TABLE_DIRECCION, null, values);
+        return 0;
     }
 
-    public void ActualizarDireccion(Direccion direccion) {
+    public long Actualizar_Direccion(Direccion direccion) {
         ContentValues values = new ContentValues();
         values.put(KEY_DIRECCION_CODIGO, direccion.getCodigo());
         values.put(KEY_DIRECCION_NUMERO, direccion.getNumero());
@@ -523,9 +581,18 @@ public class DBAdapter {
         values.put(KEY_DIRECCION_COMUNA, direccion.getComuna());
         values.put(KEY_DIRECCION_CIUDAD, direccion.getCiudad());
         values.put(KEY_ID_CLIENTE, direccion.getIdCliente());
-        db.update(TABLE_DIRECCION, values,KEY_ID_DIRECCION + " = " + direccion.getIdDireccion(),null);
-    }
 
+        String whereClause = KEY_ID_DIRECCION + " = ?";
+        String[] whereArgs = { String.valueOf(direccion.getIdDireccion())};
+        int rowsAffected = db.update(TABLE_DIRECCION, values, whereClause, whereArgs);
+
+        if (rowsAffected > 0) {
+            Toast.makeText(context, "Dirección actualizada correctamente", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "No se pudo actualizar la dirección", Toast.LENGTH_SHORT).show();
+        }
+        return 0;
+    }
 
     //Eliminar
     public void Eliminar_Direccion(Direccion direccion){

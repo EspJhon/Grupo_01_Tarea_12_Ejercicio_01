@@ -1,5 +1,7 @@
 package com.example.grupo_01_tarea_12_ejercicio_01;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,14 +62,43 @@ public class DireccionFragment extends Fragment {
         view.findViewById(R.id.btn_registrarD).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // registrarActualizarDireccion();
+                registrarActualizarDireccion();
+            }
+        });
+
+        view.findViewById(R.id.btn_eliminarD).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmarEliminarDireccion();
             }
         });
 
         return view;
     }
 
-   /* private void registrarActualizarDireccion() {
+    private void confirmarEliminarDireccion() {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Confirmar eliminación")
+                .setMessage("¿Estás seguro de que deseas eliminar esta dirección?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        eliminarDireccion();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    private void eliminarDireccion() {
+        dbAdapter.open();
+        dbAdapter.Eliminar_Direccion(objDireccion);
+        dbAdapter.close();
+        Toast.makeText(getActivity(), "Dirección eliminada", Toast.LENGTH_SHORT).show();
+        NavController navController = Navigation.findNavController(getView());
+        navController.popBackStack();
+    }
+
+    private void registrarActualizarDireccion() {
         Direccion direccion = new Direccion(
                 Integer.parseInt(et_codigoD.getText().toString()),
                 Integer.parseInt(et_numeroD.getText().toString()),
@@ -77,19 +108,23 @@ public class DireccionFragment extends Fragment {
                 objCliente.getIdCliente()
         );
 
-     dbAdapter.open();
+        dbAdapter.open();
         if (opcion == 1) {
             long id = dbAdapter.insertarDireccion(direccion);
             if (id != -1) {
                 Toast.makeText(getActivity(), "Dirección registrada", Toast.LENGTH_SHORT).show();
+                NavController navController = Navigation.findNavController(getView());
+                navController.popBackStack();
             } else {
                 Toast.makeText(getActivity(), "Error al registrar dirección", Toast.LENGTH_SHORT).show();
             }
         } else if (opcion == 2) {
             direccion.setIdDireccion(objDireccion.getIdDireccion());
             dbAdapter.Actualizar_Direccion(direccion);
-            Toast.makeText(getActivity(), objDireccion.getIdDireccion() +"", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Dirección actualizada", Toast.LENGTH_SHORT).show();
+            NavController navController = Navigation.findNavController(getView());
+            navController.popBackStack();
         }
         dbAdapter.close();
-    }*/
+    }
 }
