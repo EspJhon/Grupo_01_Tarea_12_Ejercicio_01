@@ -1,6 +1,8 @@
 package com.example.grupo_01_tarea_12_ejercicio_01.modelo;
 
-public class Direccion {
+import java.io.Serializable;
+
+public class Direccion implements Serializable {
 
     private int idDireccion;
     private int codigo;

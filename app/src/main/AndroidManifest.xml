@@ -19,7 +19,6 @@
             android:theme="@style/Theme.Grupo_01_Tarea_12_Ejercicio_01.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

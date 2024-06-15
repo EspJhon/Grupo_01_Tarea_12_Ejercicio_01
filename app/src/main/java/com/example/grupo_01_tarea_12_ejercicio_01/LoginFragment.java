@@ -62,6 +62,8 @@ public class LoginFragment extends Fragment {
 
                 if (validateInput(username, password)) {
                     if (authenticateUser(username, password)) {
+                        MyApp.setUsuario_codigo(username);
+                        MyApp.setUsuario_passwoor(password);
                         NavController navController = Navigation.findNavController(v);
                         navController.navigate(R.id.action_loginFragment_to_homeFragment);
                     } else {

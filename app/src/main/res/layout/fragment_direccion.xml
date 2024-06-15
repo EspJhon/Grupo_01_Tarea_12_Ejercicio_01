@@ -43,7 +43,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingrese el Nuemro"
+                android:hint="Ingrese el Numero"
                 android:textStyle="bold"/>
         </LinearLayout>
         <LinearLayout
@@ -107,6 +107,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="REGISTRAR"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btn_eliminarD"
+            android:layout_marginTop="15dp"
+            android:paddingVertical="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ELIMINAR"
             android:textSize="25sp"
             android:textStyle="bold"/>
         <ListView
